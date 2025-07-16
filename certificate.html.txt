@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Certificate of Completion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fff;
+      padding: 50px;
+    }
+    .certificate {
+      border: 6px solid #3a7d7c;
+      padding: 50px;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      color: #1e3a5f;
+    }
+    .certificate h1 {
+      color: #3a7d7c;
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .certificate h2 {
+      font-size: 28px;
+    }
+    .certificate p {
+      font-size: 18px;
+    }
+    .highlight {
+      font-size: 26px;
+      color: #3a7d7c;
+      font-weight: bold;
+    }
+    .date {
+      margin-top: 30px;
+      font-style: italic;
+    }
+    .footer {
+      margin-top: 50px;
+      font-style: italic;
+    }
+    .print-btn {
+      margin-top: 40px;
+    }
+    input {
+      font-size: 18px;
+      padding: 5px 10px;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<div style="text-align:center; margin-bottom: 20px;">
+  <label for="nameInput">Enter your full name: </label>
+  <input type="text" id="nameInput" placeholder="Your Name Here" />
+  <button onclick="generateCertificate()">Generate Certificate</button>
+</div>
+
+<div class="certificate" id="certificate" style="display:none;">
+  <h2>🎓 Certificate of Completion</h2>
+  <p>This certifies that</p>
+  <div class="highlight" id="displayName">[Name]</div>
+  <p>has successfully completed the</p>
+  <h1>Chaos to Connection: Proactive Classroom Management</h1>
+  <p>with distinction in PBS strategy design and classroom application.</p>
+  <div class="date">Date: <span id="completionDate">[Date]</span></div>
+  <div class="footer">Facilitator: Proactive Penny, PBS Mentor</div>
+  <div class="print-btn">
+    <button onclick="window.print()">🖨️ Print Certificate</button>
+  </div>
+</div>
+
+<script>
+  function generateCertificate() {
+    const name = document.getElementById('nameInput').value.trim();
+    const date = new Date().toLocaleDateString('en-AU', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+
+    if (name === '') {
+      alert('Please enter your name to generate the certificate.');
+      return;
+    }
+
+    document.getElementById('displayName').textContent = name;
+    document.getElementById('completionDate').textContent = date;
+    document.getElementById('certificate').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
